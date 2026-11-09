@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenue sur AppBook</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #4A90D9, #357ABD);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .header p {
+            color: rgba(255,255,255,0.9);
+            margin: 8px 0 0 0;
+            font-size: 16px;
+        }
+        .content {
+            padding: 30px 25px;
+            line-height: 1.6;
+        }
+        .content h2 {
+            color: #2C3E50;
+            margin-top: 0;
+        }
+        .content p {
+            margin: 16px 0;
+        }
+        .content .highlight {
+            background-color: #f0f7ff;
+            border-left: 4px solid #4A90D9;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4A90D9, #357ABD);
+            color: #ffffff !important;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+        .footer a {
+            color: #4A90D9;
+            text-decoration: none;
+        }
+        .social-links {
+            margin-top: 10px;
+        }
+        .social-links a {
+            margin: 0 8px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>📚 Bienvenue sur AppBook !</h1>
+        <p>La plateforme de lecture numérique</p>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h2>Bonjour {{firstName}} {{lastName}} !</h2>
+
+        <p>Nous sommes ravis de vous accueillir sur <strong>AppBook</strong>, la plateforme de lecture numérique qui vous permet de découvrir, lire et partager des livres du monde entier.</p>
+
+        <div class="highlight">
+            <p><strong>📧 Votre email :</strong> {{email}}</p>
+            <p><strong>📅 Date d'inscription :</strong> {{registrationDate}}</p>
+        </div>
+
+        <p>Voici ce que vous pouvez faire dès maintenant :</p>
+        <ul>
+            <li>📖 Explorer notre catalogue de livres</li>
+            <li>❤️ Ajouter des livres à vos favoris</li>
+            <li>📝 Laisser des avis et des commentaires</li>
+            <li>📱 Accéder à vos livres depuis n'importe quel appareil</li>
+        </ul>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://yourappbook.com/dashboard" class="btn">🎯 Commencer maintenant</a>
+        </div>
+
+        <p style="font-size: 14px; color: #666;">
+            Si vous avez des questions, n'hésitez pas à nous contacter à
+            <a href="mailto:support@yourappbook.com">support@yourappbook.com</a>.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© {{year}} AppBook. Tous droits réservés.</p>
+        <p>
+            <a href="https://yourappbook.com/privacy">Politique de confidentialité</a> |
+            <a href="https://yourappbook.com/terms">Conditions d'utilisation</a>
+        </p>
+        <div class="social-links">
+            <a href="https://facebook.com/yourappbook">Facebook</a> |
+            <a href="https://twitter.com/yourappbook">Twitter</a> |
+            <a href="https://instagram.com/yourappbook">Instagram</a>
+        </div>
+        <p style="margin-top: 10px; font-size: 11px; color: #aaa;">
+            Cet email a été envoyé automatiquement. Merci de ne pas y répondre.
+        </p>
+    </div>
+</div>
+</body>
+</html>

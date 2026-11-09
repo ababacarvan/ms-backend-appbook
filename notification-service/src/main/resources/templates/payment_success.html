@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement confirmé</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #2ECC71, #27AE60);
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            color: #ffffff;
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .header .success-icon {
+            font-size: 64px;
+            margin-bottom: 10px;
+        }
+        .content {
+            padding: 30px 25px;
+            line-height: 1.6;
+        }
+        .payment-details {
+            background-color: #f0f9f0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border: 1px solid #d4edda;
+        }
+        .payment-details p {
+            margin: 8px 0;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #2ECC71, #27AE60);
+            color: #ffffff !important;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="success-icon">✅</div>
+        <h1>Paiement confirmé !</h1>
+        <p style="color: rgba(255,255,255,0.9);">Votre transaction a été réalisée avec succès</p>
+    </div>
+
+    <div class="content">
+        <h2>Bonjour,</h2>
+
+        <p>Nous vous confirmons que votre paiement a été traité avec succès.</p>
+
+        <div class="payment-details">
+            <p><strong>💳 Montant :</strong> {{amount}} {{currency}}</p>
+            <p><strong>🆔 Transaction :</strong> {{transactionId}}</p>
+            <p><strong>📅 Date :</strong> {{date}}</p>
+        </div>
+
+        <p>Vous pouvez maintenant accéder à tous les contenus de votre abonnement.</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://yourappbook.com/dashboard" class="btn">📚 Accéder à ma bibliothèque</a>
+        </div>
+
+        <p style="font-size: 14px; color: #666;">
+            Un reçu détaillé a été envoyé à votre adresse email.
+        </p>
+    </div>
+
+    <div class="footer">
+        <p>© {{year}} AppBook. Tous droits réservés.</p>
+    </div>
+</div>
+</body>
+</html>

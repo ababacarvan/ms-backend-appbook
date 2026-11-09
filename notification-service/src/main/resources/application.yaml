@@ -1,0 +1,87 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: notification-service
+
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3300/notification-service?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true
+
+  # ===== CONFIGURATION KAFKA =====
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-service-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      enable-auto-commit: false
+      properties:
+        spring.json.trusted.packages: "*"
+        max.poll.records: 10
+        fetch.min.bytes: 1024
+        fetch.max.wait.ms: 500
+    listener:
+      ack-mode: manual
+      concurrency: 3
+
+  # ===== CONFIGURATION MAIL (Brevo SMTP) =====
+  mail:
+    host: ${BREVO_SMTP_HOST:smtp-relay.brevo.com}
+    port: ${BREVO_SMTP_PORT:587}
+    username: ${BREVO_SMTP_USER}
+    password: ${BREVO_SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
+
+  # ===== CLOUD =====
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      enabled: false
+
+# ===== BREVO SENDER =====
+brevo:
+  sender:
+    email: ${BREVO_SENDER_EMAIL}
+    name: ${BREVO_SENDER_NAME:AppBook}
+
+# ===== JWT =====
+jwt:
+  secret: ${JWT_SECRET}
+
+# ===== EUREKA =====
+eureka:
+  client:
+    enabled: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# ===== LOGGING =====
+logging:
+  level:
+    com.msbackendappbook.notificationservice: DEBUG
+    org.springframework.kafka: INFO
+    org.apache.kafka: WARN
+    org.springframework.mail: DEBUG

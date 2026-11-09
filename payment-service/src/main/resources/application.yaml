@@ -1,0 +1,56 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: payment-service
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3300/?useSSL=false&servpayment-serviceerTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+    show-sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        enable.idempotence: true
+        acks: all
+        retries: 3
+        max.in.flight.requests.per.connection: 1
+
+paytech:
+  api-url: https://paytech.sn/api # L'URL de base de l'API PayTech
+  api-key: ${PAYTECH_API_KEY}
+  secret-key: ${PAYTECH_SECRET_KEY}
+  merchant-id: ${PAYTECH_MERCHANT_ID}
+  success-url: https://yourappbook.com/payment/success
+  cancel-url: https://yourappbook.com/payment/cancel
+  ipn-url: https://yourappbook.com/api/payments/webhook/paytech
+
+jwt:
+  secret: ${JWT_SECRET}
+
+eureka:
+  client:
+    enabled: false # Désactiver pour le développement local
+
+logging:
+  level:
+    com.msbackendappbook.paymentservice: DEBUG
+
+
+  cloud:
+    discovery:
+      enabled: true
+    config:
+      enabled: false
